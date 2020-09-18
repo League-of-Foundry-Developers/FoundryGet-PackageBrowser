@@ -50,7 +50,7 @@
 
             <template v-slot:append>
               <v-container fill-width class="justify-center">
-                <v-btn icon @click="settingsOverlay = !settingsOverlay">
+                <v-btn icon @click="handleSettingsClick">
                   <v-icon>mdi-cog</v-icon>
                 </v-btn>
               </v-container>
@@ -235,6 +235,7 @@ export default {
 
   data() {
     return {
+      loading: true,    // can be used for loading icon
       modules: null,
       languages: [],
       authors: [],
@@ -266,29 +267,58 @@ export default {
   methods: {
 
     mountAPI() {
-      axios
-      .get(
-        "https://forge-vtt.com/api/bazaar"  // For future reference, the Dev API is at: "https://dev.forge-vtt.com/api/bazaar"
-      )
-      .then(response => {
-        console.log(response.data.packages);
-        let modules = [];
-        let systems = [];
-        response.data.packages.forEach(Package => {
-          if (Package.type === "system") {
-            systems.push(Package);
-          } else if (Package.type === "module") {
-            modules.push(Package);
-          }
-        })
+      this.loading = true;
+      const apis = localStorage.getObject("apis");
+
+      let modules = [];
+      let systems = [];
+
+      let buffer = {};
+
+      Object.keys(apis).forEach(async (key) => {
+        if (apis[key]) {
+          buffer[key] = undefined;
+
+          axios
+          .get(
+            key
+          )
+          .then(response => {
+            console.log(response.data.packages);
+            response.data.packages.forEach(Package => {
+              if (Package.type === "system") {
+                systems.push(Package);
+              } else if (Package.type === "module") {
+                modules.push(Package);
+              }
+            })
+            this.items = [...this.items, ...response.data.packages].reduce((newArray, item) => {
+              if (newArray.map(x => x?.name).includes(item?.name || "")) return newArray;
+              else return [...newArray, item];
+            }, [])
+
+            delete buffer[key];
+          })
+        }
+      });
+
+      (async () => {
+        let working = true;
+        setTimeout(() => working = false, 15000)
+        while (working) {
+          await this.$func.sleep(100);
+          if (Object.keys(buffer).length === 0) working = false;
+        }
+
         this.modules = modules;
         this.systems = systems;
-        this.items = this.items.concat(response.data.packages);
         this.languages = this.getLanguages();
         this.systemFilter = this.getSystems();
         this.authors = this.getAuthors();
 
-      })
+        this.loading = false;
+      })();
+
     },
 
     customFilter(items, filter) {
@@ -303,7 +333,6 @@ export default {
       let languagesSearch = filter.languages
       let systemSearch = [];
       filter.systems.forEach(system => systemSearch.push(this.getSystem(system)));
-      console.log(systemSearch)
       let authorSearch = filter.authors;
 
 
@@ -454,12 +483,23 @@ export default {
         }
       });
       return authors.sort(Intl.Collator().compare);
+    },
+
+    handleSettingsClick() {
+      this.settingsOverlay = !this.settingsOverlay;
     }
 
   },
 
   mounted() {
     console.log("Mounted");
+
+    if (!localStorage.getObject("apis")) {
+      localStorage.setObject("apis", {
+        "https://forge-vtt.com/api/bazaar": true,    // For future reference, the Dev API is at: "https://dev.forge-vtt.com/api/bazaar"
+        // "https://dev.forge-vtt.com/api/bazaar": true
+      });
+    }
 
     this.mountAPI();
 

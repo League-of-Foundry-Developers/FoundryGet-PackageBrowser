@@ -38,4 +38,33 @@ export const func = {
     return value.toString().toLowerCase().includes(query.toLowerCase());
   },
 
+  sleep: async (delay) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, delay);
+    });
+  }
+
 };
+
+Storage.prototype.setObject = function(key, value) {
+  try {
+    this.setItem(key, JSON.stringify(value));
+  }
+  catch {
+    this.setItem(key, value);
+  }
+}
+
+Storage.prototype.getObject = function(key) {
+  const value = this.getItem(key);
+  if (value != undefined) {
+    try {
+      return value && JSON.parse(value);
+    }
+    catch {
+      console.error(`Something is wrong with the ${key} localstorage!`)
+      return value;
+    }
+  }
+  return value;
+}
