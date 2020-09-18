@@ -1,5 +1,9 @@
 <template>
   <div class="hello">
+    <settings-overlay
+      v-bind:overlayState="settingsOverlay"
+      v-on:click="settingsOverlay = $event"
+    />
     <v-container>
       <v-card class="sidebar-wrapper">
         <menu class="fixed">
@@ -43,6 +47,14 @@
                 multiple
               />
             </v-card-text>
+
+            <template v-slot:append>
+              <v-container fill-width class="justify-center">
+                <v-btn icon @click="settingsOverlay = !settingsOverlay">
+                  <v-icon>mdi-cog</v-icon>
+                </v-btn>
+              </v-container>
+            </template>
 
           </v-navigation-drawer>
         </menu>
@@ -209,6 +221,7 @@
 import axios from "axios";
 import Module from "./Module.vue";
 import VFilterableDataIterator from "./DataIteratorOverride/FilterableDataIterator.vue";
+import SettingsOverlay from "./SettingsOverlay.vue"
 import { getObjectValueByPath } from "vuetify/lib/util/helpers";
 
 export default {
@@ -216,7 +229,8 @@ export default {
 
   components: {
     Module,
-    VFilterableDataIterator
+    VFilterableDataIterator,
+    SettingsOverlay
   },
 
   data() {
@@ -245,10 +259,37 @@ export default {
         'Installs'
       ],
       items: [],
+      settingsOverlay: false,
     };
   },
 
   methods: {
+
+    mountAPI() {
+      axios
+      .get(
+        "https://forge-vtt.com/api/bazaar"  // For future reference, the Dev API is at: "https://dev.forge-vtt.com/api/bazaar"
+      )
+      .then(response => {
+        console.log(response.data.packages);
+        let modules = [];
+        let systems = [];
+        response.data.packages.forEach(Package => {
+          if (Package.type === "system") {
+            systems.push(Package);
+          } else if (Package.type === "module") {
+            modules.push(Package);
+          }
+        })
+        this.modules = modules;
+        this.systems = systems;
+        this.items = this.items.concat(response.data.packages);
+        this.languages = this.getLanguages();
+        this.systemFilter = this.getSystems();
+        this.authors = this.getAuthors();
+
+      })
+    },
 
     customFilter(items, filter) {
       // filters
@@ -259,10 +300,10 @@ export default {
       catch {
         textSearch = "";
       }
-      let languagesSearch = []
-      filter.languages.forEach(languageIndex => languagesSearch.push(this.languages[languageIndex]));
+      let languagesSearch = filter.languages
       let systemSearch = [];
-      filter.systems.forEach(systemIndex => systemSearch.push(this.getSystem(this.systemFilter[systemIndex])));
+      filter.systems.forEach(system => systemSearch.push(this.getSystem(system)));
+      console.log(systemSearch)
       let authorSearch = filter.authors;
 
 
@@ -420,29 +461,7 @@ export default {
   mounted() {
     console.log("Mounted");
 
-    axios
-      .get(
-        "https://forge-vtt.com/api/bazaar"  // For future reference, the Dev API is at: "https://dev.forge-vtt.com/api/bazaar"
-      )
-      .then(response => {
-        console.log(response.data.packages);
-        let modules = [];
-        let systems = [];
-        response.data.packages.forEach(Package => {
-          if (Package.type === "system") {
-            systems.push(Package);
-          } else if (Package.type === "module") {
-            modules.push(Package);
-          }
-        })
-        this.modules = modules;
-        this.systems = systems;
-        this.items = this.items.concat(response.data.packages);
-        this.languages = this.getLanguages();
-        this.systemFilter = this.getSystems();
-        this.authors = this.getAuthors();
-
-    })
+    this.mountAPI();
 
   },
 
