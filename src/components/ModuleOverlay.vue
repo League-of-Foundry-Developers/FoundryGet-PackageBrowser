@@ -1,14 +1,16 @@
 <template>
   <v-overlay :value="overlayState">
-    <v-btn>
+    <v-card
+      v-click-outside="closeOverlay"
+    >
+      <v-card-title>Settings</v-card-title>
       <v-btn
-        text
         v-bind:overlayState="overlayState"
-        v-on:click="$emit('click', !overlayState)"
+        v-on:click="closeOverlay"
       >
 							Close
       </v-btn>
-    </v-btn>
+    </v-card>
   </v-overlay>
 </template>
 
@@ -22,9 +24,12 @@ export default {
   data: () => ({
   }),
   methods: {
+    closeOverlay() {
+      this.$emit('click', !this.overlayState)
+    }
   },
   mounted() {
-    console.log("test")
+
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
-    <!-- <settings-overlay
+    <settings-overlay
       v-bind:overlayState="settingsOverlay"
       v-on:click="settingsOverlay = $event"
-    /> -->
+    />
     <v-container>
       <v-card class="sidebar-wrapper">
         <menu class="fixed">
@@ -48,13 +48,13 @@
               />
             </v-card-text>
 
-            <!-- <template v-slot:append>
+            <template v-slot:append>
               <v-container fill-width class="justify-center">
                 <v-btn icon @click="handleSettingsClick">
                   <v-icon>mdi-cog</v-icon>
                 </v-btn>
               </v-container>
-            </template> -->
+            </template>
 
           </v-navigation-drawer>
         </menu>
@@ -221,7 +221,7 @@
 import axios from "axios";
 import Module from "./Module.vue";
 import VFilterableDataIterator from "./DataIteratorOverride/FilterableDataIterator.vue";
-//import SettingsOverlay from "./SettingsOverlay.vue"
+import SettingsOverlay from "./SettingsOverlay.vue";
 import { getObjectValueByPath } from "vuetify/lib/util/helpers";
 
 export default {
@@ -229,8 +229,8 @@ export default {
 
   components: {
     Module,
-    VFilterableDataIterator
-    //SettingsOverlay
+    VFilterableDataIterator,
+    SettingsOverlay
   },
 
   data() {
@@ -493,8 +493,7 @@ export default {
 
   mounted() {
     console.log("Mounted");
-
-    if (!localStorage.getObject("apis")) {
+    if (!localStorage.getObject("apis") || Object.keys(localStorage.getObject("apis")).length === 0) {
       localStorage.setObject("apis", {
         "https://forge-vtt.com/api/bazaar": true,    // For future reference, the Dev API is at: "https://dev.forge-vtt.com/api/bazaar"
         // "https://dev.forge-vtt.com/api/bazaar": true
