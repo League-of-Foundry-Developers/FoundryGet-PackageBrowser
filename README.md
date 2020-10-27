@@ -1,5 +1,7 @@
 # packagebrowser
 
+https://league-of-foundry-developers.github.io/FoundryGet-PackageBrowser/
+
 ## Project setup
 ```
 npm install
