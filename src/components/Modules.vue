@@ -405,7 +405,7 @@ export default {
 
     filterAuthor(value, authorSearch, key) {
       if ( !authorSearch || authorSearch?.length === 0 ) return true;
-      if ( value?.length === 0 || key !== "author" ) return false;
+      if ( value?.length === 0 || key !== "authors" ) return false;
 
       let isTrue = false;
       authorSearch.forEach(author => {

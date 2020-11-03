@@ -32,7 +32,7 @@
 					<v-card-text style="padding-top: 10px;">
 						<h4 class="author">
 							<label>Author(s): </label>
-							<span>{{ module.author }}</span>
+							<span>{{ module.authors.join(", ") }}</span>
 						</h4>
 						<p class="desc" v-html="module.description"></p>
 					</v-card-text>
