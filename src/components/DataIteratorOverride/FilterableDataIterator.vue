@@ -1,16 +1,10 @@
 <script>
 /* eslint-disable no-prototype-builtins */
 // Components
-import VData from './FilterableData';
-import VDataFooter from 'vuetify/lib/components/VDataIterator/VDataFooter'; // Mixins
+//import VData from './FilterableData';
 
-import Mobile from 'vuetify/lib/mixins/mobile';
-import Themeable from 'vuetify/lib/mixins/themeable'; // Helpers
-
-import mixins from 'vuetify/lib/util/mixins';
-import { deepEqual, getObjectValueByPath, getPrefixedScopedSlots, getSlot, camelizeObjectKeys } from 'vuetify/lib/util/helpers';
 /* @vue/component */
-
+/*
 export default mixins(Mobile, Themeable).extend({
   name: 'v-filterable-data-iterator',
   props: { ...VData.options.props,
@@ -279,5 +273,5 @@ export default mixins(Mobile, Themeable).extend({
     });
   }
 
-});
+});*/
 </script>

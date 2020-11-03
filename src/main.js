@@ -1,7 +1,6 @@
 import Vue from "vue";
 import { func } from "./util/helpers"
 import App from "./App.vue";
-import vuetify from "./plugins/vuetify";
 // import axios from "axios";
 
 
@@ -19,8 +18,6 @@ new Vue({
       modules: null
     };
   },
-
-  vuetify,
 
   mounted() {
     // console.log("Mounted");

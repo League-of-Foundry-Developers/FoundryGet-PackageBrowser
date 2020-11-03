@@ -222,7 +222,6 @@ import axios from "axios";
 import Module from "./Module.vue";
 import VFilterableDataIterator from "./DataIteratorOverride/FilterableDataIterator.vue";
 import SettingsOverlay from "./SettingsOverlay.vue";
-import { getObjectValueByPath } from "vuetify/lib/util/helpers";
 
 export default {
   name: "Modules",
@@ -357,7 +356,7 @@ export default {
         };
 
         Object.keys(item).forEach(key => {
-          let value = getObjectValueByPath(item, key);
+          let value = null; //This line needs fixed because Vuetify is gone getObjectValueByPath(item, key);
 
           if ( value != null ) {
             if ( !check.filterSearch && this.filterSearch(value, textSearch) ) check.filterSearch = true;
