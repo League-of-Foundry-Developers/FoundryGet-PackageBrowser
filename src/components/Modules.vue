@@ -460,26 +460,31 @@ export default {
     getAuthors() {
       let authors = [];
       this.modules.forEach(module => {
-        if (module.author && module.author?.length !== 0) {
-          const regex = /(,|\[|\]|\(|\)|<|>|-|–|[^/:]\/|[^ps]:| and | maintained by )/gi;
-          module.author.split(regex).forEach(author => {
-            if (typeof author !== "object"
-                && author.match(regex) == null
-                && author.match(/(object Object|translation|discord|https?:\/\/)/gi) == null
-                && author.match(/[a-zA-Z]/) != null
-            ) {
-              author = author.split(" by ")?.[1] || author;
-              author = author.split(" from ")?.[1] || author;
-              author = author.split("#")?.[0] || author;
-              author = author.trim();
-              if (!(
-                    this.$func.ciIncludes(authors, author.replace("@", ""))
-                || (author.includes("@") && author.includes("."))
-              )) {
-                authors.push(author.replace("@", ""));
-              }
-            }
-          });
+        // if (module.author && module.author?.length !== 0) {
+        //   const regex = /(,|\[|\]|\(|\)|<|>|-|–|[^/:]\/|[^ps]:| and | maintained by )/gi;
+        //   module.author.split(regex).forEach(author => {
+        //     if (typeof author !== "object"
+        //         && author.match(regex) == null
+        //         && author.match(/(object Object|translation|discord|https?:\/\/)/gi) == null
+        //         && author.match(/[a-zA-Z]/) != null
+        //     ) {
+        //       author = author.split(" by ")?.[1] || author;
+        //       author = author.split(" from ")?.[1] || author;
+        //       author = author.split("#")?.[0] || author;
+        //       author = author.trim();
+        //       if (!(
+        //             this.$func.ciIncludes(authors, author.replace("@", ""))
+        //         || (author.includes("@") && author.includes("."))
+        //       )) {
+        //         authors.push(author.replace("@", ""));
+        //       }
+        //     }
+        //   });
+        // }
+        if (module.authors && module.authors.length !== 0) {
+          module.authors.forEach(author => {
+            if (!this.$func.ciIncludes(authors, author)) authors.push(author)
+          })
         }
       });
       return authors.sort(Intl.Collator().compare);
