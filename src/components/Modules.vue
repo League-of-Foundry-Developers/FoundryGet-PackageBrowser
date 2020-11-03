@@ -434,9 +434,9 @@ export default {
       this.modules.forEach(module => {
         if (module.systems && module.systems.length !== 0) {
           module.systems.forEach(system => {
-            if (!Object.keys(this.systemCache).includes(system)) {
+            if (!this.$func.ciIncludes(Object.keys(this.systemCache), system)) {
               let systemObject = this.systems.filter(globalSystem => globalSystem.name === system);
-              if (!systems.includes(systemObject[0]?.title || system)) {
+              if (!this.$func.ciIncludes(systems, systemObject[0]?.title || system)) {
                 systems.push(systemObject[0]?.title || system);
                 this.systemCache[system] = systemObject[0]?.title || system;
               }
