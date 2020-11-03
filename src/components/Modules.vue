@@ -4,13 +4,13 @@
       v-bind:overlayState="settingsOverlay"
       v-on:click="settingsOverlay = $event"
     />
-    <v-container>
-      <v-card class="sidebar-wrapper">
+    <modules>
+      <section class="sidebar-wrapper">
         <menu class="fixed">
-          <v-navigation-drawer height="calc(100vh - 92px)" color="accent">
+          <nav height="calc(100vh - 92px)" color="accent">
 
-            <v-card-text>
-              <v-autocomplete
+            <p>
+              <select
                 v-model="filter.authors"
                 :items="authors"
                 outlined
@@ -20,10 +20,10 @@
                 label="Authors"
                 multiple
               />
-            </v-card-text>
+            </p>
 
-            <v-card-text>
-              <v-autocomplete
+            <p>
+              <select
                 v-model="filter.languages"
                 :items="languages"
                 outlined
@@ -33,10 +33,10 @@
                 label="Languages"
                 multiple
               />
-            </v-card-text>
+            </p>
 
-            <v-card-text>
-              <v-autocomplete
+            <p>
+              <select
                 v-model="filter.systems"
                 :items="systemFilter"
                 outlined
@@ -46,20 +46,20 @@
                 label="Systems"
                 multiple
               />
-            </v-card-text>
+            </p>
 
-            <template v-slot:append>
-              <v-container fill-width class="justify-center">
+            <!--template v-slot:append>
+              <div fill-width class="justify-center">
                 <v-btn icon @click="handleSettingsClick">
                   <v-icon>mdi-cog</v-icon>
                 </v-btn>
-              </v-container>
-            </template>
+              </div>
+            </template-->
 
-          </v-navigation-drawer>
+          </nav>
         </menu>
-      </v-card>
-      <v-filterable-data-iterator
+      </section>
+      <!--v-filterable-data-iterator
         :items="items"
         :items-per-page.sync="itemsPerPage"
         :page="page"
@@ -67,16 +67,17 @@
         :search="filter"
         :sort-by="sortBy.toLowerCase()"
         :sort-desc="sortDesc"
-      >
+      -->
 
-      <template v-slot:header>
+      <!--template v-slot:header-->
+      <template>
 
-          <v-toolbar
+          <div
             dark
             color="primary"
             class="mb-1"
           >
-            <v-text-field
+            <input type="text"
               v-model="filter.search"
               clearable
               flat
@@ -84,40 +85,42 @@
               hide-details
               label="Search"
             />
-            <template v-if="$vuetify.breakpoint.mdAndUp">
-              <v-spacer />
-              <v-select
+            <!--template v-if="$vuetify.breakpoint.mdAndUp"-->
+            <template>
+              <select
                 v-model="sortBy"
                 flat
                 solo-inverted
                 hide-details
                 :items="keys"
                 label="Sort by"
-              ></v-select>
-              <v-spacer></v-spacer>
-              <v-btn-toggle
+              ></select>
+              <!--div
                 v-model="sortDesc"
                 mandatory
+              -->
+              <div
+                mandatory
               >
-                <v-btn
+                <button
                   large
                   depressed
                   color="primary"
                   :value="false"
                 >
-                  <v-icon>mdi-arrow-up</v-icon>
-                </v-btn>
-                <v-btn
+                  <!--v-icon>mdi-arrow-up</v-icon-->
+                </button>
+                <button
                   large
                   depressed
                   color="accent"
                   :value="true"
                 >
-                  <v-icon>mdi-arrow-down</v-icon>
-                </v-btn>
-              </v-btn-toggle>
+                  <!--v-icon>mdi-arrow-down</v-icon-->
+                </button>
+              </div>
             </template>
-          </v-toolbar>
+          </div>
 
                 <!-- <v-chip-group
                     column
@@ -130,9 +133,10 @@
                 </v-chip-group> -->
         </template>
 
+        <!--template -->
         <template v-slot:default="props">
-          <v-row>
-            <v-col
+          <div>
+            <section
               v-for="item in props.items"
               :key="item.name"
               cols="12"
@@ -144,8 +148,8 @@
                     :module="item"
                     :modules="props.items"
                 />
-            </v-col>
-          </v-row>
+            </section>
+          </div>
         </template>
 <!--
         <template v-slot:footer>
@@ -205,7 +209,7 @@
           </v-row>
         </template>
        -->
-      </v-filterable-data-iterator>
+      <!--/v-filterable-data-iterator-->
 
 <!--
         <Module
@@ -213,14 +217,14 @@
             v-bind:module="module"
             :key="module.name"
         /> -->
-    </v-container>
+    </modules>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import Module from "./Module.vue";
-import VFilterableDataIterator from "./DataIteratorOverride/FilterableDataIterator.vue";
+//import VFilterableDataIterator from "./DataIteratorOverride/FilterableDataIterator.vue";
 import SettingsOverlay from "./SettingsOverlay.vue";
 
 export default {
@@ -228,7 +232,7 @@ export default {
 
   components: {
     Module,
-    VFilterableDataIterator,
+    //VFilterableDataIterator,
     SettingsOverlay
   },
 

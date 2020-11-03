@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-main>
+  <div class="v-app">
+    <main>
       <Modules />
-    </v-main>
-  </v-app>
+    </main>
+  </div>
 </template>
 <style lang="scss">
   .v-main {
