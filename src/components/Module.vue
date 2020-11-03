@@ -173,6 +173,7 @@ export default {
 			this.manifestLoaded = true;
 			axios
 				.get(
+					// TODO: Do not make forge api hardcoded but use api setting
 					"https://forge-vtt.com/api/bazaar/manifest/" +
 					this.module.name
 				)
