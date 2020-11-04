@@ -6,14 +6,6 @@
   </v-app>
 </template>
 <style lang="scss">
-  * {
-    --primary-color: #555555;
-    --secondary-color: #424242;
-    --accent-color: #666666;
-    --accent-color-light: #848484;
-
-    font-family: sans-serif;
-  }
   .v-main, body {
     background-color: var(--secondary-color);
   }
