@@ -6,9 +6,6 @@
   </v-app>
 </template>
 <style lang="scss">
-  .v-main, body {
-    background-color: var(--secondary-color);
-  }
   .v-card__text {
     width: initial;
   }
