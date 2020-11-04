@@ -538,6 +538,7 @@ export default {
   }
   .v-navigation-drawer {
     background-color: var(--primary-color);
+    box-shadow: var(--card-shadows);
   }
   .v-data-iterator {
     flex: 1;

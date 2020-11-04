@@ -272,6 +272,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 		border-radius: $radius;
 		animation: $trans-dur close;
 		transition: $trans-dur box-shadow,  $size-trans;
+		box-shadow: var(--card-shadows);
 
 		.v-btn {
 			color: #999;
