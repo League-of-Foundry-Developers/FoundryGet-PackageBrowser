@@ -6,6 +6,9 @@
   </v-app>
 </template>
 <style lang="scss">
+  * {
+    box-sizing: border-box;
+  }
   .v-card__text {
     width: initial;
   }
