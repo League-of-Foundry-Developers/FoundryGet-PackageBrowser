@@ -376,7 +376,6 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 			.v-card__text {
 				height: 100%;
-				width: initial;
 			}
 			.desc {
 				overflow-y: hidden;

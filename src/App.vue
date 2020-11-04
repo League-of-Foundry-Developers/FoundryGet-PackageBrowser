@@ -17,6 +17,9 @@
   .v-main, body {
     background-color: var(--secondary-color);
   }
+  .v-card__text {
+    width: initial;
+  }
 </style>
 <script>
 import Modules from "./components/Modules";

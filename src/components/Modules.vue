@@ -537,7 +537,7 @@ export default {
     }
   }
   .v-navigation-drawer {
-
+    background-color: var(--primary-color);
   }
   .v-data-iterator {
     flex: 1;
