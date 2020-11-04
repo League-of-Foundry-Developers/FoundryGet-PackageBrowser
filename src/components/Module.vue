@@ -247,11 +247,11 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 		&-track, &-track-piece {
 			border-radius: 3px;
-			background-color: var(--v-secondary-base);
+			background-color: var(--secondary-color);
 		}
 		&-thumb {
 			border-radius: 3px;
-			background-color: var(--v-primary-base);
+			background-color: var(--primary-color);
 		}
 	}
 }
@@ -268,7 +268,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 		height: 13em;
 		box-shadow: none;
 		transition: .2s box-shadow;
-		background-color: var(--v-accent-base);
+		background-color: var(--accent-color);
 		border-radius: $radius;
 		animation: $trans-dur close;
 		transition: $trans-dur box-shadow,  $size-trans;
@@ -292,7 +292,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 		header.pkg-header {
 			height: 4.5em;
 			position: relative;
-			background-color: var(--v-primary-base);
+			background-color: var(--primary-color);
 
 			.v-card {
 				&__title {
@@ -329,7 +329,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 				width: 44px;
 				text-align: center;
 				height: 44px;
-				background-color: var(--v-secondary-base);
+				background-color: var(--secondary-color);
 				border-radius: 50%;
 				svg {
 					position: absolute;
@@ -338,7 +338,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 				}
 				label {
 					font-size: .8em;
-					color: var(--v-accent-lighten3);
+					color: var(--accent-color-light);
 					line-height: 1em;
 					position: absolute;
 					top: -1.2em;
@@ -376,6 +376,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 			.v-card__text {
 				height: 100%;
+				width: initial;
 			}
 			.desc {
 				overflow-y: hidden;
@@ -388,12 +389,12 @@ $size-trans: $trans-dur height, $trans-dur width;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
-				color: var(--v-accent-lighten2);
-				border-bottom: 1px dashed var(--v-accent-lighten1);
+				color: var(--accent-color-light);
+				border-bottom: 1px dashed var(--accent-color-light);
 				margin-bottom: .5em;
 
 				label {
-					color: var(--v-accent-lighten3);
+					color: var(--accent-color-light);
 				}
 			}
 			&::after {
@@ -403,7 +404,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 				right: 0;
 				width: 100%;
 				height: 2em;
-				background-image: linear-gradient(to bottom, transparent, var(--v-accent-base));
+				background-image: linear-gradient(to bottom, transparent, var(--accent-color));
 			}
 		}
 		footer {
@@ -412,7 +413,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 			flex-wrap: wrap;
 			overflow: hidden;
 			transition: $trans-dur max-height, $trans-dur width;
-			background-color: var(--v-secondary-lighten1);
+			background-color: var(--secondary-color);
 			.v-chip {
 				font-size: 1em;
 			}
