@@ -6,8 +6,16 @@
   </v-app>
 </template>
 <style lang="scss">
-  .v-main {
-    background-color: var(--v-secondary-base);
+  * {
+    --primary-color: #555555;
+    --secondary-color: #424242;
+    --accent-color: #666666;
+    --accent-color-light: #848484;
+
+    font-family: sans-serif;
+  }
+  .v-main, body {
+    background-color: var(--secondary-color);
   }
 </style>
 <script>
