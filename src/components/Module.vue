@@ -31,7 +31,7 @@
 				<main>
 					<v-card-text style="padding-top: 10px;">
 						<h4 class="author">
-							<label>Author(s): </label>
+							<label>{{authorLabel}}</label>
 							<span>{{ module.authors.join(", ") }}</span>
 						</h4>
 						<p class="desc" v-html="module.description"></p>
@@ -177,6 +177,9 @@ export default {
 		},
 		cardType() {
 			return this.coverImage ? "image-card" : "text-card";
+		},
+		authorLabel() {
+			return `Author${this.module.authors.length > 1 ? 's' : ''}: `;
 		}
 	},
 	methods: {
