@@ -263,11 +263,11 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 		&-track, &-track-piece {
 			border-radius: 3px;
-			background-color: var(--secondary-color);
+			background-color: var(--primary-color);
 		}
 		&-thumb {
 			border-radius: 3px;
-			background-color: var(--primary-color);
+			background-color: var(--secondary-color);
 		}
 	}
 }
@@ -317,7 +317,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 				}
 			}
 			main {
-				height: 13.5em;
+				height: 12.5em;
 			}
 		}
 		&.image-card {
@@ -329,12 +329,12 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 				.v-card {
 					&__title {
-						margin-top: 6em;
+						margin-top: 6.5em;
 					}
 				}
 			}
 			main {
-				height: 6em;
+				height: 5em;
 			}
 		}
 		header.pkg-header {
@@ -356,6 +356,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 				}
 				&__subtitle {
 					line-height: 1em;
+					color: var(--light-text-color-secondary);
 					margin: 0 {
 						top: -1.3em;
 					}
