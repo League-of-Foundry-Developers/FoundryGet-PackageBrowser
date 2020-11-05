@@ -326,7 +326,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 
 				.v-card {
 					&__title {
-						margin-top: 4em;
+						margin-top: 6em;
 					}
 				}
 			}
