@@ -35,6 +35,7 @@
 							<span>{{ module.authors.join(", ") }}</span>
 						</h4>
 						<p class="desc" v-html="module.description"></p>
+						<!--p class="desc" v-html="module.short_description"></p-->
 					</v-card-text>
 				</main>
 
