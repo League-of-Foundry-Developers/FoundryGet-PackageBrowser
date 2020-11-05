@@ -136,7 +136,7 @@
               v-for="item in props.items"
               :key="item.name"
               cols="12"
-              lg="3"
+              lg="4"
               md="6"
               sm="12"
             >
