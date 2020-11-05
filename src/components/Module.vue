@@ -14,7 +14,7 @@
 				v-bind:overlayState="overlay"
 				v-on:click="overlay = $event"
 			/>
-			<v-card class="mx-auto" :style="cssVars" :ripple="false" @click="()=>{getManifest()}">
+			<v-card class="mx-auto" :style="cssVars" :class="cardType" :ripple="false" @click="()=>{getManifest()}">
 				<header class="pkg-header" :class="typeClass">
 					<v-card-title>{{ module.title }}</v-card-title>
 					<v-card-subtitle>
@@ -161,11 +161,23 @@ export default {
 			let pop = inst > 1 ? Math.round(inst) : "<1";
 			return pop;
 		},
+		coverImage() {
+			const media = this.module.media;
+			if (!media) return "";
+			const image = 
+				media.find(m => m.type == "cover") ||
+				media.find(m => m.type == "icon");
+			return image?.link ?? "";
+		},
 		cssVars() {
 			return {
-				'--footer-height': this.footerHeight + 'px'
+				'--footer-height': this.footerHeight + 'px',
+				'--cover-image': `url('${this.coverImage}')`
 			}
 		},
+		cardType() {
+			return this.coverImage ? "image-card" : "text-card";
+		}
 	},
 	methods: {
 
@@ -291,11 +303,29 @@ $size-trans: $trans-dur height, $trans-dur width;
 		.typ-none {
 			--color: #BBB;
 		}
+		.text-card {
+			header.pkg-header {
+				height: 4.5em;
+			}
+			main {
+				height: 7.5em;
+			}
+		}
+		&.image-card {
+			header.pkg-header {
+				height: 9em;
+				background-image: var(--cover-image);
+				background-size: cover;
+				background-position: center;
+			}
+			main {
+				height: 3em;
+			}
+		}
 		header.pkg-header {
-			height: 4.5em;
 			position: relative;
 			background-color: var(--primary-color);
-
+			
 			.v-card {
 				&__title {
 					font-size: 1.1em;
@@ -373,7 +403,6 @@ $size-trans: $trans-dur height, $trans-dur width;
 		main {
 			line-height: 1.5em;
 			overflow-y: hidden;
-			height: 7.5em;
 			transition: $size-trans;
 
 			.v-card__text {
