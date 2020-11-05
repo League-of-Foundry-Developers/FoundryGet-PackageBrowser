@@ -270,7 +270,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 }
 .rel {
 	position: relative;
-	height: 13em;
+	height: 18em;
 
 	.v-card {
 		position: absolute;
@@ -278,7 +278,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 		right: 0;
 		width: 100%;
 		max-width: 55ch;
-		height: 13em;
+		height: 18em;
 		box-shadow: none;
 		transition: .2s box-shadow;
 		background-color: var(--accent-color);
@@ -303,23 +303,35 @@ $size-trans: $trans-dur height, $trans-dur width;
 		.typ-none {
 			--color: #BBB;
 		}
-		.text-card {
+		&.text-card {
 			header.pkg-header {
 				height: 4.5em;
+
+				.v-card {
+					&__title {
+						margin-top: 0;
+					}
+				}
 			}
 			main {
-				height: 7.5em;
+				height: 13.5em;
 			}
 		}
 		&.image-card {
 			header.pkg-header {
-				height: 9em;
+				height: 12em;
 				background-image: var(--cover-image);
 				background-size: cover;
 				background-position: center;
+
+				.v-card {
+					&__title {
+						margin-top: 4em;
+					}
+				}
 			}
 			main {
-				height: 3em;
+				height: 6em;
 			}
 		}
 		header.pkg-header {
@@ -336,6 +348,8 @@ $size-trans: $trans-dur height, $trans-dur width;
 					white-space: nowrap;
 					width: calc(100% - 70px);
 					display: inline-block;
+					color: var(--light-text-color);
+					text-shadow: 0 0 3px #2b2b2b;
 				}
 				&__subtitle {
 					line-height: 1em;
@@ -356,7 +370,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 			.popularity {
 				position: absolute;
 				right: 40px;
-				top: calc(50% - 1em);
+				bottom: .5em;
 				display: inline-block;
 				width: 44px;
 				text-align: center;
