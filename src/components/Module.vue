@@ -167,7 +167,7 @@ export default {
 			const image = 
 				media.find(m => m.type == "cover") ||
 				media.find(m => m.type == "icon");
-			return image?.link ?? "";
+			return image?.url ?? "";
 		},
 		cssVars() {
 			return {
