@@ -192,27 +192,6 @@ export default {
 $radius: 10px;
 $trans-dur: .5s;
 
-@keyframes scroll-fade-in {
-	from {height: 0;}
-	to {height: 6px;}
-}
-
-@mixin fancy-scroll {
-	&::-webkit-scrollbar {
-		width: 6px;
-		height: 6px;
-		border-radius: 3px;
-
-		&-track, &-track-piece {
-			border-radius: 3px;
-			background-color: var(--primary-color);
-		}
-		&-thumb {
-			border-radius: 3px;
-			background-color: var(--secondary-color);
-		}
-	}
-}
 .rel {
 	position: relative;
 	height: 18em;
@@ -358,8 +337,6 @@ $trans-dur: .5s;
 				overflow-y: hidden;
 				height: 100%;
 				position: relative;
-
-				@include fancy-scroll;
 			}
 			.author {
 				overflow: hidden;
