@@ -14,7 +14,7 @@
 				v-bind:overlayState="overlay"
 				v-on:click="overlay = $event"
 			/>
-			<v-card class="mx-auto" :style="cssVars" :class="cardType" :ripple="false" @click="()=>{getManifest()}">
+			<v-card class="mx-auto" :style="cssVars" :class="cardType" :ripple="false">
 				<header class="pkg-header" :class="typeClass">
 					<v-card-title>{{ module.title }}</v-card-title>
 					<v-card-subtitle>
@@ -380,8 +380,8 @@ $trans-dur: .5s;
 				background-image: linear-gradient(to bottom, transparent, var(--accent-color));
 			}
 		}
-		&:focus main::after {
-			background: none;
+		&:hover {
+			box-shadow: 0 3px 10px 2px #000000a6;
 		}
 	}
 }
