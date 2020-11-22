@@ -383,6 +383,9 @@ $trans-dur: .5s;
 				background-image: linear-gradient(to bottom, transparent, var(--accent-color));
 			}
 		}
+		&:focus main::after {
+			background: none;
+		}
 	}
 }
 </style>
