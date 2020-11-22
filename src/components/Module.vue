@@ -312,7 +312,7 @@ $trans-dur: .5s;
 				border-radius: $radius;
 			}
 
-			.popularity {
+		/*	.popularity {
 				position: absolute;
 				right: 40px;
 				bottom: .5em;
@@ -344,7 +344,7 @@ $trans-dur: .5s;
 					width: 100%;
 					left: 0;
 				}
-			}
+			}*/
 		}
 
 		main {
