@@ -203,7 +203,6 @@ $trans-dur: .5s;
 		width: 100%;
 		max-width: 55ch;
 		height: 18em;
-		box-shadow: none;
 		transition: .2s box-shadow;
 		background-color: var(--accent-color);
 		border-radius: $radius;
@@ -232,7 +231,7 @@ $trans-dur: .5s;
 
 				.v-card {
 					&__title {
-						margin-top: 0;
+						margin-top: 1em;
 					}
 				}
 			}
@@ -249,8 +248,24 @@ $trans-dur: .5s;
 
 				.v-card {
 					&__title {
-						margin-top: 6.5em;
+						position: relative;
+						z-index: 2;
+						margin-top: 7.75em;
 					}
+					&__subtitle {
+						position: relative;
+						z-index: 2;
+					}
+				}
+				&::after {
+					display: block;
+					content: ' ';
+					position: absolute;
+					bottom: 0px;
+					background: linear-gradient(to top, #00000080, transparent);
+					width: 100%;
+					height: 6em;
+					z-index: 1;
 				}
 			}
 			main {
@@ -269,13 +284,18 @@ $trans-dur: .5s;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
-					width: calc(100% - 70px);
+					/*width: calc(100% - 70px);*/
 					display: inline-block;
 					color: var(--light-text-color);
 					text-shadow: 0 0 3px #2b2b2b;
+					padding: 0px;
+					padding-left: 2px;
+					padding-right: 2px;
+					margin: 16px;
 				}
 				&__subtitle {
 					line-height: 1em;
+					text-shadow: 0 0 3px #2b2b2b;
 					color: var(--light-text-color-secondary);
 					margin: 0 {
 						top: -1.3em;
