@@ -191,33 +191,6 @@ export default {
 <style scoped lang="scss">
 $radius: 10px;
 $trans-dur: .5s;
-$size-trans: $trans-dur height, $trans-dur width;
-
-@keyframes open {
-	0% {
-		z-index: 0;
-	}
-	1% {
-		z-index: 2;
-	}
-	99% {
-		z-index: 2;
-	}
-	100% {
-		z-index: 1;
-	}
-}
-@keyframes close {
-	0% {
-		z-index: 1;
-	}
-	99% {
-		z-index: 1;
-	}
-	100% {
-		z-index: 0;
-	}
-}
 
 @keyframes scroll-fade-in {
 	from {height: 0;}
@@ -255,8 +228,7 @@ $size-trans: $trans-dur height, $trans-dur width;
 		transition: .2s box-shadow;
 		background-color: var(--accent-color);
 		border-radius: $radius;
-		animation: $trans-dur close;
-		transition: $trans-dur box-shadow,  $size-trans;
+		transition: $trans-dur box-shadow;
 		box-shadow: var(--card-shadows);
 
 		.v-btn {
@@ -378,7 +350,6 @@ $size-trans: $trans-dur height, $trans-dur width;
 		main {
 			line-height: 1.5em;
 			overflow-y: hidden;
-			transition: $size-trans;
 
 			.v-card__text {
 				height: 100%;
@@ -412,67 +383,6 @@ $size-trans: $trans-dur height, $trans-dur width;
 				background-image: linear-gradient(to bottom, transparent, var(--accent-color));
 			}
 		}
-		footer {
-			max-height: 0em;
-			display: flex;
-			flex-wrap: wrap;
-			overflow: hidden;
-			transition: $trans-dur max-height, $trans-dur width;
-			background-color: var(--secondary-color);
-			.v-chip {
-				font-size: 1em;
-			}
-			.v-card__text {
-				padding: 0;
-				> * {
-					margin: 16px;
-				}
-			}
-			.languages {
-				max-height: 4em;
-				width: 96%;
-				margin-left: 2%;
-				white-space: nowrap;
-				overflow: hidden {
-					x: auto;
-				}
-				@include fancy-scroll;
-				.languageChip{
-					margin-right: 5px;
-				}
-			}
-			.cardButtonDiv {
-				display: flex;
-				overflow-x: hidden;
-				flex-wrap: nowrap;
-			}
-			> div {
-				width: 100%;
-			}
-			.dependencies,
-			.compatibility {
-				width: 96%;
-				margin-left: 2%;
-				white-space: nowrap;
-				overflow: hidden {
-					x: auto;
-				}
-				@include fancy-scroll;
-				&::-webkit-scrollbar {
-					height: 0;
-					animation-name: scroll-fade-in;
-					animation-duration: calc(#{$trans-dur} / 2);
-					animation-delay: $trans-dur;
-				}
-			}
-		}
-		&:hover {
-			box-shadow: 0 3px 10px 2px #000000a6;
-		}
-		&--link:before {
-			z-index: 1;
-		}
 	}
-
 }
 </style>
