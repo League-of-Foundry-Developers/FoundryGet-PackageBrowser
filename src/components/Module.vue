@@ -16,7 +16,7 @@
 			/>
 			<v-card class="mx-auto" :style="cssVars" :class="cardType" :ripple="false">
 				<header class="pkg-header" :class="typeClass">
-					<v-card-title>{{ module.title }}</v-card-title>
+					<v-card-title><a :href="'/package/'+module.name">{{ module.title }}</a></v-card-title>
 					<v-card-subtitle>
 						<span class="pkg-type">{{module.type}}</span>
 						-
@@ -292,6 +292,14 @@ $trans-dur: .5s;
 					padding-left: 2px;
 					padding-right: 2px;
 					margin: 16px;
+
+					a {
+						color: inherit;
+						text-decoration: inherit;
+						&:hover {
+							text-decoration: underline dotted;
+						}
+					}
 				}
 				&__subtitle {
 					line-height: 1em;
