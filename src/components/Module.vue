@@ -466,43 +466,11 @@ $size-trans: $trans-dur height, $trans-dur width;
 				}
 			}
 		}
-		&:focus,
-		&:focus-within {
-			width: 55ch;
-			height: calc(20em + var(--footer-height));
-			animation: $trans-dur open;
-			z-index: 1;
-			box-shadow: 0 3px 5px 2px #000000a6;
-			transition: $trans-dur box-shadow, $size-trans;
-
-			footer {
-				max-height: unset;
-				min-height: 6em;
-			}
-			main {
-				height: 15em;
-				margin-bottom: .5em;
-				.desc {
-					height: 100%;
-					overflow-y: scroll;
-				}
-				.author {
-					overflow: initial;
-					white-space: normal;
-				}
-				&::after {
-					background: none;
-				}
-			}
-		}
 		&:hover {
 			box-shadow: 0 3px 10px 2px #000000a6;
 		}
 		&--link:before {
 			z-index: 1;
-		}
-		&--link:focus:before {
-			opacity: .08;
 		}
 	}
 
