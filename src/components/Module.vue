@@ -373,18 +373,6 @@ $size-trans: $trans-dur height, $trans-dur width;
 					left: 0;
 				}
 			}
-
-			&::after {
-				content: " ";
-				position: absolute;
-				display: block;
-				width: 30px;
-				height: 100%;
-				background-color: var(--color);
-				top: 0px;
-				right: 0px;
-				border-radius: 0 $radius 0 0;
-			}
 		}
 
 		main {
