@@ -35,7 +35,6 @@
 							<span>{{ module.authors.join(", ") }}</span>
 						</h4>
 						<p class="desc" v-html="module.description"></p>
-						<!--p class="desc" v-html="module.short_description"></p-->
 					</v-card-text>
 					<!--v-card-text class="languages">
 						<v-chip class="languageChip" v-for="language in languages" :key="language">
