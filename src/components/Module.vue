@@ -215,6 +215,7 @@ $trans-dur: .5s;
 			display: block;
 			color: inherit;
 			text-decoration: inherit;
+			overflow: hidden;
 		}
 
 		.v-btn {
