@@ -15,19 +15,21 @@
 				v-on:click="overlay = $event"
 			/>
 			<v-card class="mx-auto" :style="cssVars" :class="cardType" :ripple="false">
-				<header class="pkg-header" :class="typeClass">
-					<v-card-title><a :href="'/package/'+module.name">{{ module.title }}</a></v-card-title>
-					<v-card-subtitle>
-						<span class="pkg-type">{{module.type}}</span>
-						-
-						<span class="pkg-ver">v{{ module.latest }}</span>
-						<!--span class="popularity">
-							<progress-ring :radius="25" :progress="installs" :stroke="3"/>
-							<label>Users</label>
-							<span>{{ popularity }}%</span>
-						</span-->
-					</v-card-subtitle>
-				</header>
+				<a :href="'/package/'+module.name">
+					<header class="pkg-header" :class="typeClass">
+						<v-card-title>{{ module.title }}</v-card-title>
+						<v-card-subtitle>
+							<span class="pkg-type">{{module.type}}</span>
+							-
+							<span class="pkg-ver">v{{ module.latest }}</span>
+							<!--span class="popularity">
+								<progress-ring :radius="25" :progress="installs" :stroke="3"/>
+								<label>Users</label>
+								<span>{{ popularity }}%</span>
+							</span-->
+						</v-card-subtitle>
+					</header>
+				</a>
 				<main>
 					<v-card-text style="padding-top: 10px;">
 						<h4 class="author">
@@ -209,6 +211,12 @@ $trans-dur: .5s;
 		transition: $trans-dur box-shadow;
 		box-shadow: var(--card-shadows);
 
+		> a {
+			display: block;
+			color: inherit;
+			text-decoration: inherit;
+		}
+
 		.v-btn {
 			color: #999;
 		}
@@ -292,14 +300,6 @@ $trans-dur: .5s;
 					padding-left: 2px;
 					padding-right: 2px;
 					margin: 16px;
-
-					a {
-						color: inherit;
-						text-decoration: inherit;
-						&:hover {
-							text-decoration: underline dotted;
-						}
-					}
 				}
 				&__subtitle {
 					line-height: 1em;
@@ -311,6 +311,9 @@ $trans-dur: .5s;
 				}
 			}
 
+			&:hover .v-card__title {
+				text-decoration: underline dotted;
+			}
 			.pkg-type {
 				margin-left: -2px;
 				display: inline-block;
