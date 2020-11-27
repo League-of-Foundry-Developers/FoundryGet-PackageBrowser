@@ -3,8 +3,8 @@ on:
   # release:
   push:
     # this disables the workflow
-    branches-ignore:
-      - '**'
+    #branches-ignore:
+    #  - '**'
 
 jobs:
   deploy:
