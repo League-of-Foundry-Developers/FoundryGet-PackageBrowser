@@ -2,6 +2,12 @@ name: Deploy to Foundry Hub
 on:
   # release:
   push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - '**.yml'
+      - 'docs/**'
     # this disables the workflow
     #branches-ignore:
     #  - '**'
